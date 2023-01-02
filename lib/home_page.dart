@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:projeto_teste/app_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,10 +17,24 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        child: Text('counter: $counter'),
-        onTap: () {
+    return Scaffold(
+      appBar: AppBar(
+        title: Title(
+          color: Colors.black,
+          child: const Text('Flutter App'),
+        ),
+      ),
+      body: Center(
+        child: Switch(
+          value: AppController.instance.isDarkTheme,
+          onChanged: (value) {
+            AppController.instance.changeTheme();
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.radio_button_on),
+        onPressed: () {
           setState(() {
             counter++;
           });

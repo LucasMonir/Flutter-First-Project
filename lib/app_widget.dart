@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import 'package:projeto_teste/app_controller.dart';
 import 'home_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,9 +9,19 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.amber),
-      home: const HomePage(),
+    return AnimatedBuilder(
+      animation: AppController.instance,
+      builder: ((context, child) {
+        return MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.amber,
+            brightness: AppController.instance.isDarkTheme
+                ? Brightness.dark
+                : Brightness.light,
+          ),
+          home: const HomePage(),
+        );
+      }),
     );
   }
 }
