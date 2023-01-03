@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:projeto_teste/app_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,12 +22,39 @@ class HomePageState extends State<HomePage> {
           child: const Text('Flutter App'),
         ),
       ),
-      body: Center(
-        child: Switch(
-          value: AppController.instance.isDarkTheme,
-          onChanged: (value) {
-            AppController.instance.changeTheme();
-          },
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('Counter: $counter'),
+            const CustomSwitcher(),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 100),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    color: Colors.black,
+                  ),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    color: Colors.purple,
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -40,6 +65,20 @@ class HomePageState extends State<HomePage> {
           });
         },
       ),
+    );
+  }
+}
+
+class CustomSwitcher extends StatelessWidget {
+  const CustomSwitcher({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+      value: AppController.instance.isDarkTheme,
+      onChanged: (value) {
+        AppController.instance.changeTheme();
+      },
     );
   }
 }
