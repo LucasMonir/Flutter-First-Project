@@ -26,15 +26,13 @@ class HomePageState extends State<HomePage> {
         width: double.infinity,
         height: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text('Counter: $counter'),
             const CustomSwitcher(),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 100),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: 60,
@@ -53,7 +51,7 @@ class HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
