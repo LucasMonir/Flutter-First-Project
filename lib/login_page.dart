@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_teste/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,46 +9,81 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String email = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.blueAccent,
-      child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const TextField(
-                style: TextStyle(color: Colors.white),
-                keyboardType: TextInputType.emailAddress,
-                cursorColor: Colors.cyan,
-                decoration: InputDecoration(
-                  label: Text('E-Mail'),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
+      child: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Material(
+                  elevation: 5,
+                  color: Colors.blueAccent,
+                  child: TextField(
+                    onChanged: (text) => {email = text},
+                    style: const TextStyle(color: Colors.white),
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: const Color.fromARGB(255, 178, 3, 3),
+                    decoration: const InputDecoration(
+                      label: Text('E-Mail'),
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  label: Text('Password'),
-                  border: OutlineInputBorder(),
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Login'),
-              )
-            ],
+                Material(
+                  elevation: 5,
+                  color: Colors.blueAccent,
+                  shadowColor: Colors.black,
+                  child: TextField(
+                    onChanged: (text) => {password = text},
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      label: Text('Password'),
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (email == 'test' && password == '123') {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Login'),
+                )
+              ],
+            ),
           ),
         ),
       ),
