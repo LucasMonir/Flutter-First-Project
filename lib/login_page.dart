@@ -73,11 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   onPressed: () {
                     if (email == 'test' && password == '123') {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
+                      Navigator.of(context).pushReplacementNamed('/home');
                     }
                   },
                   child: const Text('Login'),
