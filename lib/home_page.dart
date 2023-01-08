@@ -12,10 +12,35 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int counter = 0;
-
+  String profileImage = 'assets/images/background.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: Image.asset(profileImage),
+              accountName: const Text('Lucão'),
+              accountEmail: const Text('email@mail.com'),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              subtitle: const Text('Back home'),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Log Out'),
+              subtitle: const Text('Log out of the app'),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Title(
           color: Colors.black,
