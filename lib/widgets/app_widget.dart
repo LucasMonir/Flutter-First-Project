@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_teste/app_controller.dart';
 import 'package:projeto_teste/login_page.dart';
-import 'home_page.dart';
+import '../home_page.dart';
 
 class AppWidget extends StatelessWidget {
   final String? title;

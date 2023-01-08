@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_teste/widgets/profile_picture_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,31 +13,6 @@ class _LoginPageState extends State<LoginPage> {
   String password = '';
   String image = 'assets/images/image.png';
   String bgimage = 'assets/images/333.jpg';
-
-  Widget _profilePic() {
-    return Container(
-      height: 200,
-      margin: const EdgeInsets.symmetric(
-        vertical: 20.0,
-      ),
-      width: 200,
-      decoration: BoxDecoration(
-        boxShadow: const [
-          BoxShadow(
-            blurRadius: 5,
-            offset: Offset(0.0, 3.0),
-          )
-        ],
-        shape: BoxShape.circle,
-        image: DecorationImage(
-          image: NetworkImage(
-            image,
-          ),
-          fit: BoxFit.fill,
-        ),
-      ),
-    );
-  }
 
   Widget _loginForm() {
     return Card(
@@ -148,7 +124,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _profilePic(),
+              ProfilePictureWidget(
+                imageUrl: image,
+              ),
               _loginForm(),
             ],
           ),

@@ -20,7 +20,9 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: Image.asset(profileImage),
+              currentAccountPicture: ClipOval(
+                child: Image.asset(profileImage),
+              ),
               accountName: const Text('Lucão'),
               accountEmail: const Text('email@mail.com'),
             ),
